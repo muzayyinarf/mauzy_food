@@ -1,7 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const Color primaryColor = Color(0xFFFFFFFF);
+Color primaryColor = Colors.grey.shade100;
 const Color secondaryColor = Color(0xFF6B38FB);
 
 final TextTheme myTextTheme = TextTheme(
@@ -33,26 +34,43 @@ final TextTheme myTextTheme = TextTheme(
       fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 1.5),
 );
 
-ThemeData getThemedata(context) => ThemeData(
-      colorScheme: Theme.of(context).colorScheme.copyWith(
-            primary: primaryColor,
-            onPrimary: Colors.black,
-            secondary: secondaryColor,
-          ),
-      scaffoldBackgroundColor: Colors.white,
-      visualDensity: VisualDensity.adaptivePlatformDensity,
-      textTheme: myTextTheme,
-      appBarTheme: const AppBarTheme(elevation: 0),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: secondaryColor,
-          foregroundColor: Colors.white,
-          textStyle: const TextStyle(),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(0),
-            ),
+ThemeData getAndroidTheme(BuildContext context) {
+  return ThemeData(
+    colorScheme: Theme.of(context).colorScheme.copyWith(
+          primary: primaryColor,
+          onPrimary: Colors.black,
+          secondary: secondaryColor,
+        ),
+    scaffoldBackgroundColor: primaryColor,
+    visualDensity: VisualDensity.adaptivePlatformDensity,
+    textTheme: myTextTheme,
+    appBarTheme: const AppBarTheme(elevation: 0),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: secondaryColor,
+        foregroundColor: Colors.white,
+        textStyle: const TextStyle(),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(0),
           ),
         ),
       ),
-    );
+    ),
+  );
+}
+
+CupertinoThemeData getIosTheme(BuildContext context) {
+  return CupertinoThemeData(
+    brightness: Brightness.light,
+    primaryColor: secondaryColor,
+    primaryContrastingColor: CupertinoColors.black,
+    scaffoldBackgroundColor: primaryColor,
+    textTheme: CupertinoTextThemeData(
+      primaryColor: secondaryColor,
+      textStyle: myTextTheme.bodyLarge?.copyWith(
+        color: CupertinoColors.activeBlue,
+      ),
+    ),
+  );
+}

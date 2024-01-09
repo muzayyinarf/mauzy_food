@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mauzy_food/bloc/restaurant/restaurant_bloc.dart';
 import 'package:mauzy_food/common/styles.dart';
+import 'package:mauzy_food/presentation/widgets/platform_widget.dart';
 import 'package:mauzy_food/routes/router.dart';
 import 'bloc/detail_restaurant/detail_restaurant_bloc.dart';
 
@@ -23,12 +25,28 @@ class MyApp extends StatelessWidget {
           create: (context) => DetailRestaurantBloc(),
         ),
       ],
-      child: MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        title: 'Mauzy Food',
-        theme: getThemedata(context),
-        routerConfig: router,
+      child: PlatformWidget(
+        androidBuilder: _buildAndroid,
+        iosBuilder: _buildIos,
       ),
+    );
+  }
+
+  MaterialApp _buildAndroid(BuildContext context) {
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      title: 'Mauzy Food',
+      theme: getAndroidTheme(context),
+      routerConfig: router,
+    );
+  }
+
+  CupertinoApp _buildIos(BuildContext context) {
+    return CupertinoApp.router(
+      debugShowCheckedModeBanner: false,
+      title: 'Mauzy Food',
+      theme: getIosTheme(context),
+      routerConfig: router,
     );
   }
 }
