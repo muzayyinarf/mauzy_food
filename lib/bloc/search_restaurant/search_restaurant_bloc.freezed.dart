@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'detail_restaurant_bloc.dart';
+part of 'search_restaurant_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,59 +15,59 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$DetailRestaurantEvent {
+mixin _$SearchRestaurantEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String id) get,
+    required TResult Function(String keyword) doSearch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String id)? get,
+    TResult? Function(String keyword)? doSearch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String id)? get,
+    TResult Function(String keyword)? doSearch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Get value) get,
+    required TResult Function(_DoSearch value) doSearch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_Get value)? get,
+    TResult? Function(_DoSearch value)? doSearch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Get value)? get,
+    TResult Function(_DoSearch value)? doSearch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DetailRestaurantEventCopyWith<$Res> {
-  factory $DetailRestaurantEventCopyWith(DetailRestaurantEvent value,
-          $Res Function(DetailRestaurantEvent) then) =
-      _$DetailRestaurantEventCopyWithImpl<$Res, DetailRestaurantEvent>;
+abstract class $SearchRestaurantEventCopyWith<$Res> {
+  factory $SearchRestaurantEventCopyWith(SearchRestaurantEvent value,
+          $Res Function(SearchRestaurantEvent) then) =
+      _$SearchRestaurantEventCopyWithImpl<$Res, SearchRestaurantEvent>;
 }
 
 /// @nodoc
-class _$DetailRestaurantEventCopyWithImpl<$Res,
-        $Val extends DetailRestaurantEvent>
-    implements $DetailRestaurantEventCopyWith<$Res> {
-  _$DetailRestaurantEventCopyWithImpl(this._value, this._then);
+class _$SearchRestaurantEventCopyWithImpl<$Res,
+        $Val extends SearchRestaurantEvent>
+    implements $SearchRestaurantEventCopyWith<$Res> {
+  _$SearchRestaurantEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -84,7 +84,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$DetailRestaurantEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$SearchRestaurantEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
@@ -98,7 +98,7 @@ class _$StartedImpl implements _Started {
 
   @override
   String toString() {
-    return 'DetailRestaurantEvent.started()';
+    return 'SearchRestaurantEvent.started()';
   }
 
   @override
@@ -114,7 +114,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String id) get,
+    required TResult Function(String keyword) doSearch,
   }) {
     return started();
   }
@@ -123,7 +123,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String id)? get,
+    TResult? Function(String keyword)? doSearch,
   }) {
     return started?.call();
   }
@@ -132,7 +132,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String id)? get,
+    TResult Function(String keyword)? doSearch,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -145,7 +145,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Get value) get,
+    required TResult Function(_DoSearch value) doSearch,
   }) {
     return started(this);
   }
@@ -154,7 +154,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_Get value)? get,
+    TResult? Function(_DoSearch value)? doSearch,
   }) {
     return started?.call(this);
   }
@@ -163,7 +163,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Get value)? get,
+    TResult Function(_DoSearch value)? doSearch,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -173,34 +173,36 @@ class _$StartedImpl implements _Started {
   }
 }
 
-abstract class _Started implements DetailRestaurantEvent {
+abstract class _Started implements SearchRestaurantEvent {
   const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$GetImplCopyWith<$Res> {
-  factory _$$GetImplCopyWith(_$GetImpl value, $Res Function(_$GetImpl) then) =
-      __$$GetImplCopyWithImpl<$Res>;
+abstract class _$$DoSearchImplCopyWith<$Res> {
+  factory _$$DoSearchImplCopyWith(
+          _$DoSearchImpl value, $Res Function(_$DoSearchImpl) then) =
+      __$$DoSearchImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String id});
+  $Res call({String keyword});
 }
 
 /// @nodoc
-class __$$GetImplCopyWithImpl<$Res>
-    extends _$DetailRestaurantEventCopyWithImpl<$Res, _$GetImpl>
-    implements _$$GetImplCopyWith<$Res> {
-  __$$GetImplCopyWithImpl(_$GetImpl _value, $Res Function(_$GetImpl) _then)
+class __$$DoSearchImplCopyWithImpl<$Res>
+    extends _$SearchRestaurantEventCopyWithImpl<$Res, _$DoSearchImpl>
+    implements _$$DoSearchImplCopyWith<$Res> {
+  __$$DoSearchImplCopyWithImpl(
+      _$DoSearchImpl _value, $Res Function(_$DoSearchImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? keyword = null,
   }) {
-    return _then(_$GetImpl(
-      null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+    return _then(_$DoSearchImpl(
+      null == keyword
+          ? _value.keyword
+          : keyword // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -208,61 +210,61 @@ class __$$GetImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetImpl implements _Get {
-  const _$GetImpl(this.id);
+class _$DoSearchImpl implements _DoSearch {
+  const _$DoSearchImpl(this.keyword);
 
   @override
-  final String id;
+  final String keyword;
 
   @override
   String toString() {
-    return 'DetailRestaurantEvent.get(id: $id)';
+    return 'SearchRestaurantEvent.doSearch(keyword: $keyword)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetImpl &&
-            (identical(other.id, id) || other.id == id));
+            other is _$DoSearchImpl &&
+            (identical(other.keyword, keyword) || other.keyword == keyword));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id);
+  int get hashCode => Object.hash(runtimeType, keyword);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetImplCopyWith<_$GetImpl> get copyWith =>
-      __$$GetImplCopyWithImpl<_$GetImpl>(this, _$identity);
+  _$$DoSearchImplCopyWith<_$DoSearchImpl> get copyWith =>
+      __$$DoSearchImplCopyWithImpl<_$DoSearchImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String id) get,
+    required TResult Function(String keyword) doSearch,
   }) {
-    return get(id);
+    return doSearch(keyword);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String id)? get,
+    TResult? Function(String keyword)? doSearch,
   }) {
-    return get?.call(id);
+    return doSearch?.call(keyword);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String id)? get,
+    TResult Function(String keyword)? doSearch,
     required TResult orElse(),
   }) {
-    if (get != null) {
-      return get(id);
+    if (doSearch != null) {
+      return doSearch(keyword);
     }
     return orElse();
   }
@@ -271,50 +273,50 @@ class _$GetImpl implements _Get {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Get value) get,
+    required TResult Function(_DoSearch value) doSearch,
   }) {
-    return get(this);
+    return doSearch(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_Get value)? get,
+    TResult? Function(_DoSearch value)? doSearch,
   }) {
-    return get?.call(this);
+    return doSearch?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Get value)? get,
+    TResult Function(_DoSearch value)? doSearch,
     required TResult orElse(),
   }) {
-    if (get != null) {
-      return get(this);
+    if (doSearch != null) {
+      return doSearch(this);
     }
     return orElse();
   }
 }
 
-abstract class _Get implements DetailRestaurantEvent {
-  const factory _Get(final String id) = _$GetImpl;
+abstract class _DoSearch implements SearchRestaurantEvent {
+  const factory _DoSearch(final String keyword) = _$DoSearchImpl;
 
-  String get id;
+  String get keyword;
   @JsonKey(ignore: true)
-  _$$GetImplCopyWith<_$GetImpl> get copyWith =>
+  _$$DoSearchImplCopyWith<_$DoSearchImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$DetailRestaurantState {
+mixin _$SearchRestaurantState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(DetailRestaurantResponseModel data) loaded,
+    required TResult Function(SearchRestaurantResponseModel data) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -322,7 +324,7 @@ mixin _$DetailRestaurantState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(DetailRestaurantResponseModel data)? loaded,
+    TResult? Function(SearchRestaurantResponseModel data)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -330,7 +332,7 @@ mixin _$DetailRestaurantState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(DetailRestaurantResponseModel data)? loaded,
+    TResult Function(SearchRestaurantResponseModel data)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -363,17 +365,17 @@ mixin _$DetailRestaurantState {
 }
 
 /// @nodoc
-abstract class $DetailRestaurantStateCopyWith<$Res> {
-  factory $DetailRestaurantStateCopyWith(DetailRestaurantState value,
-          $Res Function(DetailRestaurantState) then) =
-      _$DetailRestaurantStateCopyWithImpl<$Res, DetailRestaurantState>;
+abstract class $SearchRestaurantStateCopyWith<$Res> {
+  factory $SearchRestaurantStateCopyWith(SearchRestaurantState value,
+          $Res Function(SearchRestaurantState) then) =
+      _$SearchRestaurantStateCopyWithImpl<$Res, SearchRestaurantState>;
 }
 
 /// @nodoc
-class _$DetailRestaurantStateCopyWithImpl<$Res,
-        $Val extends DetailRestaurantState>
-    implements $DetailRestaurantStateCopyWith<$Res> {
-  _$DetailRestaurantStateCopyWithImpl(this._value, this._then);
+class _$SearchRestaurantStateCopyWithImpl<$Res,
+        $Val extends SearchRestaurantState>
+    implements $SearchRestaurantStateCopyWith<$Res> {
+  _$SearchRestaurantStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -390,7 +392,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$DetailRestaurantStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$SearchRestaurantStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -404,7 +406,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'DetailRestaurantState.initial()';
+    return 'SearchRestaurantState.initial()';
   }
 
   @override
@@ -421,7 +423,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(DetailRestaurantResponseModel data) loaded,
+    required TResult Function(SearchRestaurantResponseModel data) loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -432,7 +434,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(DetailRestaurantResponseModel data)? loaded,
+    TResult? Function(SearchRestaurantResponseModel data)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -443,7 +445,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(DetailRestaurantResponseModel data)? loaded,
+    TResult Function(SearchRestaurantResponseModel data)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -491,7 +493,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements DetailRestaurantState {
+abstract class _Initial implements SearchRestaurantState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -504,7 +506,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$DetailRestaurantStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$SearchRestaurantStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -518,7 +520,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'DetailRestaurantState.loading()';
+    return 'SearchRestaurantState.loading()';
   }
 
   @override
@@ -535,7 +537,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(DetailRestaurantResponseModel data) loaded,
+    required TResult Function(SearchRestaurantResponseModel data) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -546,7 +548,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(DetailRestaurantResponseModel data)? loaded,
+    TResult? Function(SearchRestaurantResponseModel data)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -557,7 +559,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(DetailRestaurantResponseModel data)? loaded,
+    TResult Function(SearchRestaurantResponseModel data)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -605,7 +607,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements DetailRestaurantState {
+abstract class _Loading implements SearchRestaurantState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -615,12 +617,12 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({DetailRestaurantResponseModel data});
+  $Res call({SearchRestaurantResponseModel data});
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$DetailRestaurantStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$SearchRestaurantStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
@@ -635,7 +637,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
       null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as DetailRestaurantResponseModel,
+              as SearchRestaurantResponseModel,
     ));
   }
 }
@@ -646,11 +648,11 @@ class _$LoadedImpl implements _Loaded {
   const _$LoadedImpl(this.data);
 
   @override
-  final DetailRestaurantResponseModel data;
+  final SearchRestaurantResponseModel data;
 
   @override
   String toString() {
-    return 'DetailRestaurantState.loaded(data: $data)';
+    return 'SearchRestaurantState.loaded(data: $data)';
   }
 
   @override
@@ -675,7 +677,7 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(DetailRestaurantResponseModel data) loaded,
+    required TResult Function(SearchRestaurantResponseModel data) loaded,
     required TResult Function(String message) error,
   }) {
     return loaded(data);
@@ -686,7 +688,7 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(DetailRestaurantResponseModel data)? loaded,
+    TResult? Function(SearchRestaurantResponseModel data)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loaded?.call(data);
@@ -697,7 +699,7 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(DetailRestaurantResponseModel data)? loaded,
+    TResult Function(SearchRestaurantResponseModel data)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -745,11 +747,11 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements DetailRestaurantState {
-  const factory _Loaded(final DetailRestaurantResponseModel data) =
+abstract class _Loaded implements SearchRestaurantState {
+  const factory _Loaded(final SearchRestaurantResponseModel data) =
       _$LoadedImpl;
 
-  DetailRestaurantResponseModel get data;
+  SearchRestaurantResponseModel get data;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -766,7 +768,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$DetailRestaurantStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$SearchRestaurantStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -796,7 +798,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'DetailRestaurantState.error(message: $message)';
+    return 'SearchRestaurantState.error(message: $message)';
   }
 
   @override
@@ -821,7 +823,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(DetailRestaurantResponseModel data) loaded,
+    required TResult Function(SearchRestaurantResponseModel data) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -832,7 +834,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(DetailRestaurantResponseModel data)? loaded,
+    TResult? Function(SearchRestaurantResponseModel data)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -843,7 +845,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(DetailRestaurantResponseModel data)? loaded,
+    TResult Function(SearchRestaurantResponseModel data)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -891,7 +893,7 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements DetailRestaurantState {
+abstract class _Error implements SearchRestaurantState {
   const factory _Error(final String message) = _$ErrorImpl;
 
   String get message;

@@ -2,12 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mauzy_food/common/extensions.dart';
+import 'package:mauzy_food/common/global_variables.dart';
 import 'package:mauzy_food/common/styles.dart';
+import 'package:mauzy_food/data/models/response/detail_restaurant_response_model.dart';
 import 'package:mauzy_food/presentation/widgets/drink_menu.dart';
 import 'package:mauzy_food/presentation/widgets/food_menu.dart';
 
 import '../../bloc/detail_restaurant/detail_restaurant_bloc.dart';
-import '../../data/models/restaurant.dart';
 import '../widgets/platform_widget.dart';
 
 class DetailPage extends StatefulWidget {
@@ -23,7 +24,7 @@ class _DetailPageState extends State<DetailPage> {
   void initState() {
     context
         .read<DetailRestaurantBloc>()
-        .add(DetailRestaurantEvent.getDetail(widget.id));
+        .add(DetailRestaurantEvent.get(widget.id));
     super.initState();
   }
 
@@ -42,18 +43,12 @@ class _DetailPageState extends State<DetailPage> {
       ),
       body: BlocBuilder<DetailRestaurantBloc, DetailRestaurantState>(
         builder: (context, state) {
-          RestaurantElement? restaurant = state.maybeWhen(
-            loaded: (data) {
-              return data;
-            },
-            orElse: () {
-              return null;
-            },
+          return state.maybeWhen(
+            loading: () => _buildLoading(),
+            loaded: (data) => _buildContent(data),
+            error: (message) => _buildError(message),
+            orElse: () => _buildLoading(),
           );
-          if (restaurant == null) {
-            return const CircularProgressIndicator();
-          }
-          return _buildContent(context, restaurant);
         },
       ),
     );
@@ -66,34 +61,28 @@ class _DetailPageState extends State<DetailPage> {
         middle: Text('Detail Restaurant'),
       ),
       child: BlocBuilder<DetailRestaurantBloc, DetailRestaurantState>(
-        builder: (context, state) {
-          RestaurantElement? restaurant = state.maybeWhen(
-            loaded: (data) {
-              return data;
-            },
-            orElse: () {
-              return null;
-            },
-          );
-          if (restaurant == null) {
-            return const CircularProgressIndicator();
-          }
-          return _buildContent(context, restaurant);
-        },
+        builder: (context, state) => state.maybeWhen(
+          loading: () => _buildLoading(),
+          loaded: (data) => _buildContent(data),
+          error: (message) => _buildError(message),
+          orElse: () => _buildLoading(),
+        ),
       ),
     );
   }
 
-  Widget _buildContent(BuildContext context, RestaurantElement restaurant) {
+  Widget _buildContent(DetailRestaurantResponseModel restaurant) {
     return ListView(
       children: [
         Hero(
-          tag: restaurant.pictureId,
+          tag: restaurant.restaurant.pictureId,
           child: Container(
             height: 200,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage(restaurant.pictureId),
+                image: NetworkImage(
+                  GlobalVariables.image.large(restaurant.restaurant.pictureId),
+                ),
                 fit: BoxFit.cover,
               ),
             ),
@@ -105,7 +94,7 @@ class _DetailPageState extends State<DetailPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                restaurant.name,
+                restaurant.restaurant.name,
                 style: context.textTheme.headlineSmall,
               ),
               Row(
@@ -115,7 +104,7 @@ class _DetailPageState extends State<DetailPage> {
                     width: 4.0,
                   ),
                   Text(
-                    restaurant.city,
+                    restaurant.restaurant.city,
                     style: context.textTheme.bodyLarge,
                   ),
                 ],
@@ -127,14 +116,14 @@ class _DetailPageState extends State<DetailPage> {
                     width: 4.0,
                   ),
                   Text(
-                    restaurant.rating.toString(),
+                    restaurant.restaurant.rating.toString(),
                     style: context.textTheme.bodyLarge,
                   ),
                 ],
               ),
               const Divider(),
               Text(
-                restaurant.description,
+                restaurant.restaurant.description,
                 style: context.textTheme.bodyMedium,
               ),
               const Divider(),
@@ -143,7 +132,7 @@ class _DetailPageState extends State<DetailPage> {
                 style: context.textTheme.headlineSmall,
               ),
               FoodMenu(
-                items: restaurant.menus,
+                items: restaurant.restaurant.menus,
               ),
               // const Divider(),
               Text(
@@ -151,12 +140,27 @@ class _DetailPageState extends State<DetailPage> {
                 style: context.textTheme.headlineSmall,
               ),
               DrinkMenu(
-                items: restaurant.menus,
+                items: restaurant.restaurant.menus,
               ),
             ],
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildLoading() {
+    return const Center(
+      child: CircularProgressIndicator(),
+    );
+  }
+
+  Widget _buildError(String errorMessage) {
+    return Center(
+      child: Text(
+        errorMessage,
+        style: const TextStyle(color: Colors.red),
+      ),
     );
   }
 }

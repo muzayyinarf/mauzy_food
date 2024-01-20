@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mauzy_food/common/extensions.dart';
+import 'package:mauzy_food/data/models/response/detail_restaurant_response_model.dart';
 import 'package:mauzy_food/presentation/widgets/neumorphic_button.dart';
-
-import '../../data/models/restaurant.dart';
 
 class DrinkMenu extends StatelessWidget {
   final Menus items;

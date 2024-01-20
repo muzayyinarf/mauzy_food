@@ -3,8 +3,8 @@ import 'dart:convert';
 
 import '../models/restaurant.dart';
 
-class RestaurantService {
-  Future<Restaurant> getLocalRestaurants() async {
+class RestaurantLocalDatasource {
+  Future<Restaurant> getRestaurants() async {
     String data =
         await rootBundle.loadString('assets/json/local_restaurant.json');
 
@@ -14,7 +14,7 @@ class RestaurantService {
   }
 
   Future<RestaurantElement?> getRestaurantById(String id) async {
-    Restaurant restaurant = await getLocalRestaurants();
+    Restaurant restaurant = await getRestaurants();
 
     List<RestaurantElement> restaurants = restaurant.restaurants;
     RestaurantElement? foundRestaurant;
