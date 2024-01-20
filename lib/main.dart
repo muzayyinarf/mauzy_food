@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mauzy_food/bloc/list_restaurant/list_restaurant_bloc.dart';
 import 'package:mauzy_food/bloc/restaurant/restaurant_bloc.dart';
+import 'package:mauzy_food/bloc/search_restaurant/search_restaurant_bloc.dart';
 import 'package:mauzy_food/common/styles.dart';
+import 'package:mauzy_food/data/datasources/restaurant_remote_datasource.dart';
 import 'package:mauzy_food/presentation/widgets/platform_widget.dart';
 import 'package:mauzy_food/routes/router.dart';
 import 'bloc/detail_restaurant/detail_restaurant_bloc.dart';
@@ -22,7 +25,15 @@ class MyApp extends StatelessWidget {
           create: (context) => RestaurantBloc(),
         ),
         BlocProvider(
-          create: (context) => DetailRestaurantBloc(),
+          create: (context) => ListRestaurantBloc(RestaurantRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              DetailRestaurantBloc(RestaurantRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              SearchRestaurantBloc(RestaurantRemoteDatasource()),
         ),
       ],
       child: PlatformWidget(

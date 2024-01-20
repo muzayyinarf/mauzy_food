@@ -37,7 +37,7 @@ final TextTheme myTextTheme = TextTheme(
 ThemeData getAndroidTheme(BuildContext context) {
   return ThemeData(
     colorScheme: Theme.of(context).colorScheme.copyWith(
-          primary: primaryColor,
+          primary: Colors.black,
           onPrimary: Colors.black,
           secondary: secondaryColor,
         ),
@@ -49,13 +49,16 @@ ThemeData getAndroidTheme(BuildContext context) {
       style: ElevatedButton.styleFrom(
         backgroundColor: secondaryColor,
         foregroundColor: Colors.white,
-        textStyle: const TextStyle(),
+        textStyle: const TextStyle(color: Colors.black),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(0),
           ),
         ),
       ),
+    ),
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: Colors.grey.shade700,
     ),
   );
 }

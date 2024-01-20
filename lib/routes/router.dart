@@ -20,7 +20,7 @@ final router = GoRouter(
             path: 'detail/:id',
             name: Routes.detail,
             builder: (context, state) => DetailPage(
-              id: state.pathParameters['id'] as String,
+              id: state.pathParameters['id'] ?? '',
             ),
           ),
         ]),

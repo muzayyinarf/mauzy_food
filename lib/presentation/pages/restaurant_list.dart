@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mauzy_food/common/extensions.dart';
+import 'package:mauzy_food/common/global_variables.dart';
+import 'package:mauzy_food/data/models/response/list_restaurant_response_model.dart';
 
 import 'package:mauzy_food/routes/names_route.dart';
 
-import '../../data/models/restaurant.dart';
-import 'neumorphic_button.dart';
+import '../widgets/neumorphic_button.dart';
 
-class RestaurantMenu extends StatelessWidget {
-  final Restaurant items;
-  const RestaurantMenu({
+class RestaurantList extends StatelessWidget {
+  final ListRestaurantResponseModel items;
+  const RestaurantList({
     Key? key,
     required this.items,
   }) : super(key: key);
@@ -44,7 +45,8 @@ class RestaurantMenu extends StatelessWidget {
                           margin: const EdgeInsets.only(right: 10),
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: NetworkImage(item.pictureId),
+                                image: NetworkImage(GlobalVariables.image
+                                    .small(item.pictureId)),
                                 fit: BoxFit.cover),
                             borderRadius: BorderRadius.circular(20),
                           ),

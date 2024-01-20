@@ -3,8 +3,9 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mauzy_food/bloc/restaurant/restaurant_bloc.dart';
-import 'package:mauzy_food/presentation/pages/restaurant_list_page.dart';
+import 'package:mauzy_food/bloc/list_restaurant/list_restaurant_bloc.dart';
+import 'package:mauzy_food/presentation/pages/restaurant_page.dart';
+import 'package:mauzy_food/presentation/pages/search_restaurant_page.dart';
 import 'package:mauzy_food/presentation/pages/settings_page.dart';
 import 'package:mauzy_food/presentation/widgets/platform_widget.dart';
 
@@ -25,20 +26,23 @@ class _HomePageState extends State<HomePage> {
       label: 'Restaurant',
     ),
     BottomNavigationBarItem(
+      icon: Icon(Platform.isIOS ? CupertinoIcons.search : Icons.search),
+      label: 'Search',
+    ),
+    BottomNavigationBarItem(
       icon: Icon(Platform.isIOS ? CupertinoIcons.settings : Icons.settings),
       label: 'Settings',
     ),
   ];
   final List<Widget> _listWidget = [
-    const RestaurantListPage(),
+    const RestaurantPage(),
+    const SearchRestaurantPage(),
     const SettingsPage(),
   ];
 
   @override
   void initState() {
-    context
-        .read<RestaurantBloc>()
-        .add(const RestaurantEvent.getAllRestaurant());
+    context.read<ListRestaurantBloc>().add(const ListRestaurantEvent.get());
     super.initState();
   }
 

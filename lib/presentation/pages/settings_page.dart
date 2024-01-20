@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mauzy_food/common/extensions.dart';
+import 'package:mauzy_food/presentation/widgets/custom_dialog.dart';
 import 'package:mauzy_food/presentation/widgets/platform_widget.dart';
 
 import '../widgets/neumorphic_button.dart';
@@ -78,7 +79,7 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
         16.sh,
         NeumorphicButton(
-          onTap: () {},
+          onTap: () async => customDialog(context),
           child: const ListTile(
             leading: Icon(
               Icons.shopping_bag,
@@ -89,7 +90,7 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
         16.sh,
         NeumorphicButton(
-          onTap: () {},
+          onTap: () async => customDialog(context),
           child: const ListTile(
             leading: Icon(
               Icons.language,
@@ -100,7 +101,7 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
         16.sh,
         NeumorphicButton(
-          onTap: () {},
+          onTap: () async => customDialog(context),
           child: ListTile(
             leading: const Icon(
               Icons.dark_mode,
@@ -118,7 +119,7 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
         16.sh,
         NeumorphicButton(
-          onTap: () {},
+          onTap: () async => customDialog(context),
           child: const ListTile(
             leading: Icon(
               Icons.location_on,
@@ -129,7 +130,7 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
         16.sh,
         NeumorphicButton(
-          onTap: () {},
+          onTap: () async => customDialog(context),
           child: const ListTile(
             leading: Icon(
               Icons.star,
