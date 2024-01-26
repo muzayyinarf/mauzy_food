@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mauzy_food/bloc/theme/theme_bloc.dart';
+import 'package:mauzy_food/common/styles.dart';
 
 class NeumorphicButton extends StatefulWidget {
   final VoidCallback onTap;
   final Widget child;
 
-  const NeumorphicButton({Key? key, required this.onTap, required this.child})
-      : super(key: key);
+  const NeumorphicButton({super.key, required this.onTap, required this.child});
 
   @override
   State<NeumorphicButton> createState() => _NeumorphicButtonState();
@@ -16,6 +18,7 @@ class _NeumorphicButtonState extends State<NeumorphicButton> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = BlocProvider.of<ThemeBloc>(context).state.isDarkmode;
     return GestureDetector(
       onTapDown: (_) {
         setState(() {
@@ -37,18 +40,20 @@ class _NeumorphicButtonState extends State<NeumorphicButton> {
         duration: const Duration(milliseconds: 200),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Colors.grey[100],
+          color: isDarkMode ? backgroundDarkModeColor : backgroundColor,
           boxShadow: isPressed
               ? null
               : [
                   BoxShadow(
-                    color: Colors.grey.shade300,
+                    color: isDarkMode
+                        ? shadow2DarkModeColor
+                        : Colors.grey.shade300,
                     offset: const Offset(4.0, 4.0),
                     blurRadius: 6.0,
                   ),
-                  const BoxShadow(
-                    color: Colors.white,
-                    offset: Offset(-4.0, -4.0),
+                  BoxShadow(
+                    color: isDarkMode ? shadow1DarkModeColor : Colors.white,
+                    offset: const Offset(-4.0, -4.0),
                     blurRadius: 6.0,
                   ),
                 ],

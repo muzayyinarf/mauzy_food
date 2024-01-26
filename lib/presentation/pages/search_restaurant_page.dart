@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mauzy_food/bloc/search_restaurant/search_restaurant_bloc.dart';
+import 'package:mauzy_food/common/styles.dart';
 import 'package:mauzy_food/presentation/widgets/platform_widget.dart';
 import 'package:mauzy_food/presentation/pages/search_restaurant_list.dart';
 
+import '../../bloc/theme/theme_bloc.dart';
 import '../widgets/search_widget.dart';
 
 class SearchRestaurantPage extends StatefulWidget {
@@ -30,31 +32,41 @@ class _SearchRestaurantPageState extends State<SearchRestaurantPage> {
   }
 
   Widget _buildAndroid(context) {
-    return Scaffold(
-      backgroundColor: Colors.grey.shade100,
-      appBar: AppBar(title: const Text('Search Restaurant')),
-      body: _buildList(),
+    return BlocBuilder<ThemeBloc, ThemeState>(
+      builder: (context, state) {
+        return Scaffold(
+          backgroundColor:
+              state.isDarkmode ? backgroundDarkModeColor : backgroundColor,
+          appBar: AppBar(title: const Text('Search Restaurant')),
+          body: _buildList(),
+        );
+      },
     );
   }
 
   Widget _buildIos(context) {
-    return CupertinoPageScaffold(
-      backgroundColor: Colors.grey.shade100,
-      navigationBar: const CupertinoNavigationBar(
-        middle: Text('Search Restaurant'),
-      ),
-      child: SafeArea(
-        child: _buildList(),
-      ),
+    return BlocBuilder<ThemeBloc, ThemeState>(
+      builder: (context, state) {
+        return CupertinoPageScaffold(
+          backgroundColor:
+              state.isDarkmode ? backgroundDarkModeColor : backgroundColor,
+          navigationBar: const CupertinoNavigationBar(
+            middle: Text('Search Restaurant'),
+          ),
+          child: SafeArea(
+            child: _buildList(),
+          ),
+        );
+      },
     );
   }
 
   Widget _buildList() {
-    return Container(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        children: [
-          SearchWidget(
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SearchWidget(
             onSubmitted: (value) {
               context
                   .read<SearchRestaurantBloc>()
@@ -63,33 +75,39 @@ class _SearchRestaurantPageState extends State<SearchRestaurantPage> {
                   ));
             },
           ),
-          Expanded(
-            child: BlocBuilder<SearchRestaurantBloc, SearchRestaurantState>(
-              builder: (context, state) {
-                return state.maybeWhen(
-                  loading: () => _buildLoading(),
-                  loaded: (data) {
-                    if (data.restaurants.isEmpty) {
-                      return const Center(
-                        child: Text('Restaurant tidak ditemukan'),
-                      );
-                    }
-                    return SearchRestaurantList(items: data);
-                  },
-                  error: (message) => _buildError(message),
-                  orElse: () => const SizedBox(),
-                );
-              },
-            ),
+        ),
+        Expanded(
+          child: BlocBuilder<SearchRestaurantBloc, SearchRestaurantState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                loading: () => _buildLoading(),
+                loaded: (data) {
+                  if (data.restaurants.isEmpty) {
+                    return const Center(
+                      child: Text('Restaurant tidak ditemukan'),
+                    );
+                  }
+                  return SearchRestaurantList(items: data);
+                },
+                error: (message) => _buildError(message),
+                orElse: () => const SizedBox(),
+              );
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
   Widget _buildLoading() {
-    return const Center(
-      child: CircularProgressIndicator(),
+    return BlocBuilder<ThemeBloc, ThemeState>(
+      builder: (context, state) {
+        return Center(
+          child: CircularProgressIndicator(
+            color: state.isDarkmode ? blueColor : purpleColor,
+          ),
+        );
+      },
     );
   }
 
@@ -97,7 +115,8 @@ class _SearchRestaurantPageState extends State<SearchRestaurantPage> {
     return Center(
       child: Text(
         errorMessage,
-        style: const TextStyle(color: Colors.red),
+        style: TextStyle(color: redColor),
+        textAlign: TextAlign.center,
       ),
     );
   }

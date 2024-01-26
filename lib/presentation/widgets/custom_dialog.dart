@@ -2,20 +2,39 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mauzy_food/bloc/theme/theme_bloc.dart';
+import 'package:mauzy_food/common/styles.dart';
 
-customDialog(BuildContext context) {
+customDialog(BuildContext context, {String? title, String? content}) {
+  final isDarkMode = BlocProvider.of<ThemeBloc>(context).state.isDarkmode;
   if (Platform.isIOS) {
     showCupertinoDialog(
       context: context,
       barrierDismissible: true,
       builder: (context) {
         return CupertinoAlertDialog(
-          title: const Text('Coming Soon!'),
-          content: const Text('This feature will be coming soon!'),
+          title: Text(
+            title ?? 'Coming Soon!',
+            style: textStyle.copyWith(
+              color: isDarkMode ? whiteColor : blackColor,
+            ),
+          ),
+          content: Text(
+            content ?? 'This feature will be coming soon!',
+            style: textStyle.copyWith(
+              color: isDarkMode ? whiteColor : blackColor,
+            ),
+          ),
           actions: [
             CupertinoDialogAction(
-              child: const Text('Ok'),
+              child: Text(
+                'Ok',
+                style: textStyle.copyWith(
+                  color: isDarkMode ? whiteColor : blackColor,
+                ),
+              ),
               onPressed: () {
                 context.pop();
               },
@@ -29,14 +48,29 @@ customDialog(BuildContext context) {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Coming Soon!'),
-          content: const Text('This feature will be coming soon!'),
+          title: Text(
+            'Coming Soon!',
+            style: textStyle.copyWith(
+              color: isDarkMode ? whiteColor : blackColor,
+            ),
+          ),
+          content: Text(
+            'This feature will be coming soon!',
+            style: textStyle.copyWith(
+              color: isDarkMode ? whiteColor : blackColor,
+            ),
+          ),
           actions: [
             TextButton(
               onPressed: () {
                 context.pop();
               },
-              child: const Text('Ok'),
+              child: Text(
+                'Ok',
+                style: textStyle.copyWith(
+                  color: isDarkMode ? whiteColor : blackColor,
+                ),
+              ),
             ),
           ],
         );

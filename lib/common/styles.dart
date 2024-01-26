@@ -2,9 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-Color primaryColor = Colors.grey.shade100;
-const Color secondaryColor = Color(0xFF6B38FB);
+Color backgroundColor = Colors.grey.shade100;
+Color backgroundDarkModeColor = const Color(0xff233441);
+Color shadow1DarkModeColor = const Color(0xff32414c);
+Color shadow2DarkModeColor = const Color(0xff1b2630);
+Color blueColor = const Color(0xff0effee);
+Color redColor = const Color(0xffff555c);
+Color blackColor = const Color(0xff233441);
+Color whiteColor = const Color(0xffffffff);
+Color greyColor = const Color(0xff7c858d);
+Color purpleColor = const Color(0xFF6B38FB);
 
+final TextStyle textStyle = GoogleFonts.libreFranklin();
 final TextTheme myTextTheme = TextTheme(
   displayLarge: GoogleFonts.merriweather(
       fontSize: 92, fontWeight: FontWeight.w300, letterSpacing: -1.5),
@@ -35,19 +44,20 @@ final TextTheme myTextTheme = TextTheme(
 );
 
 ThemeData getAndroidTheme(BuildContext context) {
-  return ThemeData(
+  return ThemeData.light().copyWith(
     colorScheme: Theme.of(context).colorScheme.copyWith(
           primary: Colors.black,
           onPrimary: Colors.black,
-          secondary: secondaryColor,
+          secondary: purpleColor,
         ),
-    scaffoldBackgroundColor: primaryColor,
+    scaffoldBackgroundColor: backgroundColor,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: myTextTheme,
-    appBarTheme: const AppBarTheme(elevation: 0),
+    appBarTheme:
+        AppBarTheme(elevation: 0, color: backgroundColor, centerTitle: true),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: secondaryColor,
+        backgroundColor: purpleColor,
         foregroundColor: Colors.white,
         textStyle: const TextStyle(color: Colors.black),
         shape: const RoundedRectangleBorder(
@@ -58,7 +68,37 @@ ThemeData getAndroidTheme(BuildContext context) {
       ),
     ),
     progressIndicatorTheme: ProgressIndicatorThemeData(
-      color: Colors.grey.shade700,
+      color: purpleColor,
+    ),
+  );
+}
+
+ThemeData getDarkModeTheme(BuildContext context) {
+  return ThemeData.dark().copyWith(
+    colorScheme: Theme.of(context).colorScheme.copyWith(),
+    scaffoldBackgroundColor: backgroundDarkModeColor,
+    visualDensity: VisualDensity.adaptivePlatformDensity,
+    textTheme: myTextTheme,
+    appBarTheme: AppBarTheme(
+      elevation: 1,
+      color: backgroundDarkModeColor,
+      foregroundColor: whiteColor,
+      centerTitle: true,
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: purpleColor,
+        foregroundColor: Colors.black,
+        textStyle: const TextStyle(color: Colors.black),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(0),
+          ),
+        ),
+      ),
+    ),
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: blueColor,
     ),
   );
 }
@@ -66,11 +106,26 @@ ThemeData getAndroidTheme(BuildContext context) {
 CupertinoThemeData getIosTheme(BuildContext context) {
   return CupertinoThemeData(
     brightness: Brightness.light,
-    primaryColor: secondaryColor,
+    primaryColor: purpleColor,
     primaryContrastingColor: CupertinoColors.black,
-    scaffoldBackgroundColor: primaryColor,
+    scaffoldBackgroundColor: backgroundColor,
     textTheme: CupertinoTextThemeData(
-      primaryColor: secondaryColor,
+      primaryColor: purpleColor,
+      textStyle: myTextTheme.bodyLarge?.copyWith(
+        color: CupertinoColors.activeBlue,
+      ),
+    ),
+  );
+}
+
+CupertinoThemeData getIosDarkTheme(BuildContext context) {
+  return CupertinoThemeData(
+    brightness: Brightness.dark,
+    primaryColor: blueColor,
+    primaryContrastingColor: CupertinoColors.black,
+    scaffoldBackgroundColor: backgroundDarkModeColor,
+    textTheme: CupertinoTextThemeData(
+      primaryColor: blueColor,
       textStyle: myTextTheme.bodyLarge?.copyWith(
         color: CupertinoColors.activeBlue,
       ),
